@@ -265,5 +265,6 @@ fixtures = [
     {
         "doctype": "Print Format",
         "filters": [["name", "in", ("Sales Invoice Receipt")]],
+        # hello
     },
 ]
