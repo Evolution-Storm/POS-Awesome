@@ -6,7 +6,7 @@
         class="grey--text"
       ></v-app-bar-nav-icon>
       <v-img
-        src="/assets/posawesome/js/posapp/components/pos/pos.png"
+        src="/assets/posawesome/js/posapp/components/pos/ababeel.svg"
         alt="POS Awesome"
         max-width="32"
         class="mr-2"
@@ -17,8 +17,8 @@
         style="cursor: pointer"
         class="text-uppercase primary--text"
       >
-        <span class="font-weight-light">pos</span>
-        <span>awesome</span>
+        <span class="font-weight-light">Ababeel</span>
+        <span>Soft</span>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
