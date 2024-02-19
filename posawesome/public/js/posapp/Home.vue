@@ -9,6 +9,7 @@
 
 <script>
 import Navbar from './components/Navbar.vue';
+import Shortcuts from './components/pos/shortcuts.vue';
 import POS from './components/pos/Pos.vue';
 import Payments from './components/payments/Pay.vue';
 
@@ -22,6 +23,7 @@ export default {
     Navbar,
     POS,
     Payments,
+    Shortcuts
   },
   methods: {
     setPage(page) {

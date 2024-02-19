@@ -4,8 +4,7 @@
       <v-col md="8" cols="12" class="pb-2 pr-0">
         <v-card
           class="main mx-auto grey lighten-5 mt-3 p-3 pb-16 overflow-y-auto"
-          style="max-height: 94vh; height: 94vh"
-        >
+          style="max-height: 94vh; height: 94vh">
           <Customer></Customer>
           <v-divider></v-divider>
           <div>
@@ -16,8 +15,7 @@
                   <span v-if="total_outstanding_amount" class="primary--text"
                     >{{ __("- Total Outstanding") }} :
                     {{ currencySymbol(pos_profile.currency) }}
-                    {{ formtCurrency(total_outstanding_amount) }}</span
-                  >
+                    {{ formtCurrency(total_outstanding_amount) }}</span>
                 </p>
               </v-col>
               <v-col md="5" cols="12">
@@ -645,6 +643,32 @@ export default {
         });
       });
     },
+    load_print_page(payment_entry_name) {
+      console.log(payment_entry_name)
+      const print_format =
+        this.pos_profile.print_format_for_online ||
+        this.pos_profile.custom_payment_print_format;
+      const letter_head = this.pos_profile.letter_head || 0;
+      const url =
+        frappe.urllib.get_base_url() +
+        "/printview?doctype=Payment%20Entry&name=" +
+        payment_entry_name +
+        "&trigger_print=1" +
+        "&format=" +
+        print_format +
+        "&no_letterhead=" +
+        letter_head;
+      const printWindow = window.open(url, "Print");
+      printWindow.addEventListener(
+        "load",
+        function () {
+          printWindow.print();
+          // printWindow.close();
+          // NOTE : uncomoent this to auto closing printing window
+        },
+        true
+      );
+    },
     clear_all(with_customer_info = true) {
       this.customer_name = "";
       if (with_customer_info) {
@@ -720,6 +744,8 @@ export default {
             vm.get_unallocated_payments();
             vm.set_mpesa_search_params();
             vm.get_draft_mpesa_payments_register();
+            
+            vm.load_print_page(r.message.all_payments_entry[0].name)
           }
         },
       });

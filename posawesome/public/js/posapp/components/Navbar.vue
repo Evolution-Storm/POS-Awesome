@@ -248,6 +248,8 @@ export default {
         ) {
           this.items.push(payments);
         }
+        const shortcuts={text:'Shortcuts',icon:"mdi-greater-than-or-equal"};
+        this.items.push(shortcuts)
       });
       evntBus.$on('set_last_invoice', (data) => {
         this.last_invoice = data;

@@ -409,7 +409,6 @@ def process_pos_payment(payload):
         msg += "</table>"
     if len(msg) > 0:
         frappe.msgprint(msg)
-
     return {
         "new_payments_entry": new_payments_entry,
         "all_payments_entry": all_payments_entry,
